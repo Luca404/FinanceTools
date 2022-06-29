@@ -1,0 +1,91 @@
+body{ 
+    max-height: 90vh;
+}
+
+#corpo{
+    background-color: white;
+}
+#cella{
+    width: 20%;
+    margin-left: 40%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#titolo{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: block;
+}
+
+#pageTopBorder{
+    position: absolute;
+    display:none;
+    background-color: #3445b4;
+    margin-top: -2.6%;
+    margin-left: -2.6%;
+    width: 99%;
+    height: 3%;
+}
+
+#pageBotBorder{
+    position: absolute;
+    display:none;
+    background-color: #3445b4;
+    margin-top: 44%;
+    margin-left: -2.6%;
+    width: 99%;
+    height: 3%;
+}
+
+#pageRightBorder{
+    position: absolute;
+    display: none;
+    background-color: #3445b4;
+    margin-top: -2.6%;
+    margin-left: 94.5%;
+    width: 1.5%;
+    height: 99%;
+}
+
+
+
+
+
+#addTd{
+    text-align: center;
+    vertical-align: middle;
+}
+
+#addTd:hover{
+    cursor: pointer;
+}
+
+.hoverText {
+    position: relative;
+}
+
+.hoverText:before {
+    content: attr(data-hover);
+    visibility: hidden;
+    opacity: 0;
+    width: 80px;
+    background-color: black;
+    color: #fff;
+    font-size: 10px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 0;
+    transition: opacity 1s ease-in-out;
+  
+    position: absolute;
+    z-index: 1;
+    left: -88%;
+    top: 130%;
+}
+
+#addTd:hover > .hoverText:before {
+    opacity: 1;
+    visibility: visible;
+}

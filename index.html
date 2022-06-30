@@ -64,16 +64,49 @@
                 <div id="div1">
                     <h2 class="mb-4">Saved Portfolios:</h2>
                     <table class="table table-hover table-dark">
-                        <thead>
+                        <thead id="table1Head">
                             <tr>
                                 <th scope="col">Name</th>
                                 <th scope="col">Tickers</th>
+                                <th scope="col"></th>                                
                             </tr>
                         </thead>
                         <tbody id="tbody1">
                             <tr >
-                                <td colspan="2" id="addTd" >
-                                    <span class="hoverText" data-hover="Click to add a Portfolio">Add</span>
+                                <td colspan="3" id="addTd">
+                                    <div id="addTdDiv" data-toggle="modal" data-target="#addModal">
+                                        <span class="hoverText" data-hover="Click to add a Portfolio" >Add</span>
+                                    </div>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="addModalLabel">Add Portfolio</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span></button>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h5>
+                                                        Portfolio Name:
+                                                        <input>
+                                                    </h5>
+                                                    <h5>
+                                                        Portfolio Tickers:
+                                                        <input id="pfInputTicker" oninput="addPfInputTickers(this)" />
+                                                        <div class="icon-container" id="loaderIcon">
+                                                            <i class="loader"></i>
+                                                        </div>
+                                                    </h5>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>

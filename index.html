@@ -11,6 +11,12 @@
         <!-- <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" /> -->
 		<script defer src="https://pyscript.net/alpha/pyscript.js"></script>
         <title>Finance Tools</title>
+        <py-env>
+            - matplotlib
+            - pandas
+            - pandas_datareader
+            - PyOpenSSL
+        </py-env>
     </head>
     <body id="corpo">
         <script src="js/mainScript.js"></script>		
@@ -94,7 +100,7 @@
                                                     </h5>
                                                     <h5>
                                                         Portfolio Tickers:
-                                                        <input id="pfInputTicker" oninput="addPfInputTickers(this)" />
+                                                        <input id="pfInputTicker" />
                                                         <div class="icon-container" id="loaderIcon">
                                                             <i class="loader"></i>
                                                         </div>

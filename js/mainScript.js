@@ -162,31 +162,35 @@ function addPfInputTickers(input){
 		document.getElementById("loaderIcon").style.display = "block";
 		var ticker = input.value.split(",")[0];
 		console.log(ticker);
-		fetchFromYahoo(ticker);
+		fetchFromYahoo1(ticker);
 	}
 	
 }
 
 async function fetchFromYahoo(ticker){
-	url = "https://finance.yahoo.com/quote/" + ticker;
-	const response = await fetch(url, {
-		method: 'GET', // *GET, POST, PUT, DELETE, etc.
-		mode: 'no-cors', // no-cors, *cors, same-origin
-		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-		credentials: 'omit', // include, *same-origin, omit
-		redirect: 'follow', // manual, *follow, error
-		referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-		//body: JSON.stringify(data) // body data type must match "Content-Type" header
-	  })
-	  .then(response => response.json())
-	  .then(data => {
-		console.log('Success:', data);
-	  })
-	  .catch((error) => {
-		console.error('Error:', error);
-	  });
-	  console.log(data);
-	  return response; // parses JSON response into native JavaScript objects
+	const encodedParams = new URLSearchParams();
+	encodedParams.append("symbol", ticker );
+
+	const options = {
+		method: 'POST',
+		headers: {
+			'content-type': 'application/x-www-form-urlencoded',
+			'X-RapidAPI-Key': '1d07df0099msh1a0d579d94b2bcfp13e6b3jsnc049c5c88a8e',
+			'X-RapidAPI-Host': 'yahoo-finance97.p.rapidapi.com'
+		},
+		body: encodedParams
+	};
+	
+	fetch('https://yahoo-finance97.p.rapidapi.com/stock-info', options)
+		.then(response => response.json())
+		.then(response => {
+			var name = response.data.longName;
+			if( name != undefined )
+				console.log(name);
+			else
+				console.log("Symbol not found");
+		})
+		.catch(err => console.error(err));
 }
 
 

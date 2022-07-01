@@ -1,7 +1,12 @@
 import json
 import os
 import asyncio
+import pandas
+from js import document
+from pyodide import create_proxy
+from pandas_datareader import data as wb
 from pyodide.http import pyfetch
+import PyOpenSSL
 #import mysql.connector
 
 async def loadJson():
@@ -14,31 +19,19 @@ async def loadJson():
     return pfList
     
 
-async def fillTablePfManager():
-    pfList = await loadJson()
-    tbody = document.getElementById("tbody1")
-    i = 0
-    for pf in pfList["PortFolios"]:
-        tr = document.createElement("tr")
-        td1 = document.createElement("td")
-        td1.appendChild(document.createTextNode(str(pf["pfName"])))
-        tr.appendChild(td1)
-        td2 = document.createElement("td")
-        td2.appendChild(document.createTextNode(str(pf["tickers"])))
-        tr.appendChild(td2)
-
-        td3 = document.createElement("td")
-        button = document.createElement("button")
-        button.appendChild(document.createTextNode("Modify"))
-        button.id = "modifyPf"
-        button.className = "btn btn-dark"
-        button.type = "button"
-        td3.appendChild(button)
+def checkTickerYahoo(event):
+    text = document.getElementById("pfInputTicker").value
+    if(text[-1] == ","):
+        document.getElementById("pfInputTicker").setAttribute("disabled", True)
+        document.getElementById("loaderIcon").style.display = "block"
+        ticker = text.split(",")[0]
+        data = wb.DataReader(ticker, data_source="yahoo")
+        console.log(data)
         
-        tr.appendChild(td3)
+    #data = wb.DataReader(ticker, data_source="yahoo")
+    #console.log(data)
 
-        
-        tbody.insertBefore( tr, tbody.lastElementChild );
-        i += 1
+inputTickerProxy = create_proxy(checkTickerYahoo)
+inputTicker = document.getElementById("pfInputTicker")
+inputTicker.addEventListener("input", inputTickerProxy)
 
-#fillTablePfManager()

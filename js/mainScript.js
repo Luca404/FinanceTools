@@ -161,10 +161,34 @@ function addPfInputTickers(input){
 		document.getElementById(input.id).setAttribute("disabled", true);
 		document.getElementById("loaderIcon").style.display = "block";
 		var ticker = input.value.split(",")[0];
-		console.log(ticker); 
+		console.log(ticker);
+		fetchFromYahoo(ticker);
 	}
 	
 }
+
+async function fetchFromYahoo(ticker){
+	url = "https://finance.yahoo.com/quote/" + ticker;
+	const response = await fetch(url, {
+		method: 'GET', // *GET, POST, PUT, DELETE, etc.
+		mode: 'no-cors', // no-cors, *cors, same-origin
+		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+		credentials: 'omit', // include, *same-origin, omit
+		redirect: 'follow', // manual, *follow, error
+		referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+		//body: JSON.stringify(data) // body data type must match "Content-Type" header
+	  })
+	  .then(response => response.json())
+	  .then(data => {
+		console.log('Success:', data);
+	  })
+	  .catch((error) => {
+		console.error('Error:', error);
+	  });
+	  console.log(data);
+	  return response; // parses JSON response into native JavaScript objects
+}
+
 
 function showBorder(){
 	if(!Border){

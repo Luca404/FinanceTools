@@ -98,13 +98,17 @@
                                                         Portfolio Name:
                                                         <input>
                                                     </h5>
-                                                    <h5>
-                                                        Portfolio Tickers:
-                                                        <input id="pfInputTicker" />
-                                                        <div class="icon-container" id="loaderIcon">
-                                                            <i class="loader"></i>
-                                                        </div>
-                                                    </h5>
+                                                    <h5>Portfolio Tickers:</h5>
+                                                    <select class="form-select">
+                                                        <option selected>Stocks</option>
+                                                        <option value="1">ETF</option>
+                                                        <option value="2">Commodities</option>
+                                                    </select>
+                                                    <input id="pfInputTicker" />
+                                                    <div class="icon-container" id="loaderIcon">
+                                                        <i class="loader"></i>
+                                                    </div>
+                                                    
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

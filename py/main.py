@@ -46,6 +46,7 @@ async def checkTickerYahoo1(event):
         out = await response.json()
         try:        
             tickerName = out["Name"]
+            
             console.log(tickerName)
         except:
             console.log("Ticker not found")

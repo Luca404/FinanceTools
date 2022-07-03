@@ -57,7 +57,7 @@ async def checkTickerYahoo1(event):
     #data = wb.DataReader(ticker, data_source="yahoo")
     #console.log(data)
 
-inputTickerProxy = create_proxy(checkTickerYahoo1)
-inputTicker = document.getElementById("pfInputTicker")
-inputTicker.addEventListener("input", inputTickerProxy)
+#inputTickerProxy = create_proxy(checkTickerYahoo1)
+#inputTicker = document.getElementById("pfInputTicker")
+#inputTicker.addEventListener("input", inputTickerProxy)
 

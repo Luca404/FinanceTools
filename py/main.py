@@ -4,9 +4,9 @@ import asyncio
 import pandas
 from js import document
 from pyodide import create_proxy
-from pandas_datareader import data as wb
+#from pandas_datareader import data as wb
 from pyodide.http import pyfetch
-import requests
+#import requests
 #import mysql.connector
 
 async def loadJson():

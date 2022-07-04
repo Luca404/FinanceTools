@@ -8,14 +8,13 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="./css/style.css">
         <link rel="stylesheet" href="stile.css">
+        <link rel="stylesheet" href="css/chosen.css">
         <!-- <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" /> -->
 		<script defer src="https://pyscript.net/alpha/pyscript.js"></script>
         <title>Finance Tools</title>
         <py-env>
             - matplotlib
             - pandas
-            - pandas_datareader
-            - requests
         </py-env>
     </head>
     <body id="corpo">
@@ -94,16 +93,45 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <h5>
-                                                        Portfolio Name:
-                                                        <input>
-                                                    </h5>
+                                                    <h5>Portfolio Name:</h5>
+                                                    <input />
+                                                    <br />
+                                                    <br />
                                                     <h5>Portfolio Tickers:</h5>
-                                                    <select class="form-select">
-                                                        <option selected>Stocks</option>
-                                                        <option value="1">ETF</option>
-                                                        <option value="2">Commodities</option>
-                                                    </select>
+                                                    <div id="portfolioTickers" style="display:inline-block; vertical-align:top;">
+                                                        <div class="row justify-content-center mb-3" style="color:black;">
+                                                            <div class="col-md-5">
+                                                                <div class="color-1">
+                                                                    <select data-placeholder="Select Asset Type" multiple class="chosen-select" id="multiple-label-example" tabindex="8">
+                                                                    <option>Stocks</option>
+                                                                    <option>ETF</option>
+                                                                    <option>Commodities</option>
+                                                                    </select>
+                                                                </div>                                                        
+                                                            </div>
+                                                        </div>
+                                                        <div class="row justify-content-center mb-3" style="color:black;">
+                                                            <div class="col-md-5">
+                                                                <div class="color-1">
+                                                                    <select data-placeholder="Select Country" multiple class="chosen-select" id="multiple-label-example" tabindex="8">
+                                                                    <option>Nord America</option>
+                                                                    <option>Europe</option>
+                                                                    <option>Asia</option>
+                                                                    </select>
+                                                                </div>                                                        
+                                                            </div>
+                                                        </div>
+                                                        <div class="row justify-content-center mb-3" style="color:black;">
+                                                            <div class="col-md-5">
+                                                                <div class="color-1">
+                                                                    <select data-placeholder="Select Market" multiple class="chosen-select" id="multiple-label-example" tabindex="8">
+                                                                    <option>NASDAQ</option>
+                                                                    <option>NYSE</option>
+                                                                    </select>
+                                                                </div>                                                        
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <input id="pfInputTicker" />
                                                     <div class="icon-container" id="loaderIcon">
                                                         <i class="loader"></i>
@@ -158,6 +186,7 @@
         <script src="./js/jquery.min.js"></script>
         <script src="./js/popper.js"></script>
         <script src="./js/bootstrap.min.js"></script>
+        <script src="./js/chosen.jquery.min.js"></script>
         <script src="./js/main.js"></script>
     </body>
 </html>

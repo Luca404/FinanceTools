@@ -1,30 +1,15 @@
-var Border = false;
 loadTable1();
+showTickerExchange();
 
-//Function to set active to the active <li> in sidebar
-function navActive(num){
-	var ul = document.getElementById("lista");
-	var items = ul.getElementsByTagName("li");
-	for (var i = 0; i < items.length; ++i) {
-		items[i].className = "";
-	}
-	var item = document.getElementById( "pf" + parseInt(num) );
-	item.className = "active";
+//Function for showing portFolios ticker option
+function showTickerExchange(value){
+	inputExchange = document.getElementById("tickerExchangeInput");
+	if( value == 1 )
+		inputExchange.style.display = "inline-block";
+	else
+		inputExchange.style.display = "none";
 }
 
-//Function to show divs from the nav menu
-function showDiv(divNum)
-{
-	navActive(divNum);
-	
-	var divs = document.getElementById("content");
-	var div = divs.getElementsByTagName("div");
-	for (var i = 0; i < div.length; ++i) {
-		div[i].style.display = "none";
-	}
-	var show = document.getElementById("div" + parseInt(divNum));
-	show.style.display = "";
-}
 
 async function loadTable1(){
 	const pf = await import( "../json/portfolios.json", {
@@ -151,7 +136,7 @@ async function loadTable1(){
 
 function modifyPfManager(item){
 	pfNum = item.id.toString();
-	pfNum = pfNum.split("modifyButt")[1]
+	pfNum = pfNum.split("modifyButt")[1];
 	console.log(pfNum);
 }
 
@@ -192,25 +177,4 @@ async function fetchFromYahoo(ticker){
 		})
 		.catch(err => console.error(err));
 }
-
-
-function showBorder(){
-	if(!Border){
-		var top = document.getElementById("pageTopBorder");
-		top.style.display = "block";
-		var right = document.getElementById("pageRightBorder");
-		right.style.display = "block";
-		var bot = document.getElementById("pageBotBorder");
-		bot.style.display = "block";
-		Border = true;
-	}
-	else{
-		var top = document.getElementById("pageTopBorder");
-		top.style.display = "none";
-		var right = document.getElementById("pageRightBorder");
-		right.style.display = "none";
-		var bot = document.getElementById("pageBotBorder");
-		bot.style.display = "none";
-		Border=false;
-	}
-}   
+ 

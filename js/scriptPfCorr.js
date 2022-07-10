@@ -10,6 +10,7 @@ async function loadSavedPf(){
     var savedPfMenu = document.getElementById('savedPfMenu'); 
     for(var i = 0; i < portFolios.length; i++) {
         var opt = document.createElement('option');
+        opt.value = i;
         opt.appendChild(document.createTextNode(portFolios[i].pfName + ":  "));
 		opt.appendChild(document.createTextNode(" " + portFolios[i].tickers));
         savedPfMenu.appendChild(opt);

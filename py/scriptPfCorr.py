@@ -9,14 +9,17 @@ from pyodide.http import pyfetch
 #import requests
 #import mysql.connector
 
-async def loadJson():
-    response = await pyfetch(url="./json/portfolios.json", method="GET")
-    output = await response.json()
-    out = str(output)
-    validOut = out.replace("\'", "\"")
-    console.log( validOut )				
-    pfList = json.loads( validOut )
-    return pfList
+#Global Variables
+pfName = ""
+pfTickers = ""
+
+def getPfData(e):
+    savedPfMenu = document.getElementById("savedPfMenu")
+    pfOptions = savedPfMenu.getElementsByTagName("option")
+    strPf = pfOptions[savedPfMenu.selectedIndex].text
+    pfName = strPf.split(": ")[0]
+    pfTickers = strPf.split(": ")[1]
+    pass
     
 
 def checkTickerYahoo(event):
@@ -57,7 +60,11 @@ async def checkTickerYahoo1(event):
     #data = wb.DataReader(ticker, data_source="yahoo")
     #console.log(data)
 
-#inputTickerProxy = create_proxy(checkTickerYahoo1)
-#inputTicker = document.getElementById("pfInputTicker")
-#inputTicker.addEventListener("input", inputTickerProxy)
+
+#Set a proxy for change in the portfolio dropdown menu
+selectPfProxy = create_proxy(getPfData)
+selectPf = document.getElementById("savedPfMenu")
+selectPf.addEventListener("change", selectPfProxy)
+
+getPfData("pollo")
 

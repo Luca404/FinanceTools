@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Finance Tools</title>
+        <title>Portfolio Correlation</title>
 
         <!-- Bootstrap -->
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
@@ -12,9 +12,9 @@
         <link rel="stylesheet" href="./css/style.css">
 
         <!-- PyScript -->
-        <!-- <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" /> -->
-		<!-- <script defer src="https://pyscript.net/alpha/pyscript.js"></script> -->        		
-		<!-- <py-script src="py/main.py"></py-script>
+        <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+		<script defer src="https://pyscript.net/alpha/pyscript.js"></script>       		
+		<py-script src="py/scriptPfCorr.py"></py-script>
         <py-env>
             - matplotlib
             - pandas
@@ -66,9 +66,14 @@
     	    </nav>
 
             <!-- Page Content  -->
-            <div id="content" class="p-4 p-md-5 pt-5">
+            <div id="content" class="p-4 p-md-5 pt-5" onload="loadSavedPf();">
                 <h2 class="mb-4">Portfolio Correlation</h2>
-                    
+                <h4>Select saved portfolio: </h4>
+                <select id="savedPfMenu">
+                </select>
+                <div id="pythonContent">
+
+                </div>
             </div>
 		</div>
 
